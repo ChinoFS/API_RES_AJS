@@ -5,7 +5,9 @@ class UserController {
     async login ({request, auth}){
         const {email, password} = request.all();
         const token = await auth.attempt(email,password);
+        console.log("Llego peticion de app");
         return token;
+        
     }
 
 
@@ -17,6 +19,10 @@ class UserController {
             password
         });
         return user;
+    }
+
+    async index(){  
+        return await User.all()
     }
 }
 
